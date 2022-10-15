@@ -20,17 +20,15 @@ def partition(arr, lo, high)
   while i < high
     if arr[i] <= pivot
       jdx += 1
-      temp = arr[i]
-      arr[i] = arr[jdx]
-      arr[jdx] = temp
+      arr[i], arr[jdx] = arr[jdx], arr[i]
     end
 
     i += 1
   end
 
   jdx += 1
-  arr[high] = arr[jdx]
-  arr[jdx] = pivot
+
+  arr[high], arr[jdx] = arr[jdx], arr[high]
 
   jdx
 end
