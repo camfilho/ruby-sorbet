@@ -33,4 +33,5 @@ def partition(arr, lo, high)
   jdx
 end
 
+sig {params(array: T::Array[T.untyped]).void}
 def quicksort(array) = qs(array, 0, array.size - 1)
