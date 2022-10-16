@@ -1,4 +1,5 @@
 # typed: true
+
 require 'sorbet-runtime'
 
 extend T::Sig
@@ -14,24 +15,20 @@ end
 
 def partition(arr, lo, high)
   pivot = arr[high]
-  jdx = lo - 1
+  p2 = lo - 1
+  p1 = lo
 
-  i = lo
-  while i < high
-    if arr[i] <= pivot
-      jdx += 1
-      arr[i], arr[jdx] = arr[jdx], arr[i]
+  while p1 <= high
+    if arr[p1] <= pivot
+      p2 += 1
+      arr[p1], arr[p2] = arr[p2], arr[p1]
     end
 
-    i += 1
+    p1 += 1
   end
 
-  jdx += 1
-
-  arr[high], arr[jdx] = arr[jdx], arr[high]
-
-  jdx
+  p2
 end
 
-sig {params(array: T::Array[T.untyped]).void}
+sig { params(array: T::Array[T.untyped]).void }
 def quicksort(array) = qs(array, 0, array.size - 1)
